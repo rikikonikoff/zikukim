@@ -1,12 +1,13 @@
 import React from 'react';
-import { ReactDOM } from 'react-dom';
-import { BrowserRouter, Link, Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import App from 'components/App/index';
+import Dancers from 'components/Dancers/index';
 
 const Routes = (props) => (
   <BrowserRouter {...props}>
     <div>
       <Route path="/" component={App} />
+      <Route path="/dancers" component={Dancers} />
     </div>
   </BrowserRouter>
 );

@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "dotenv": "^4.0.0",
-    "google-spreadsheet": "^2.0.4",
+    "gapi-client": "^0.0.3",
     "payment": "^2.3.0",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",

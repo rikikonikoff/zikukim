@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import gapi from 'gapi-client';
-import Dancers from 'components/Dancers/index';
-import './index.css';
+import Dancers from 'components/Dancers';
+import './App.css';
 
 const spreadsheetId = process.env.REACT_APP_SPREADSHEET_KEY
 const apiKey = process.env.REACT_APP_GOOGLE_API_KEY
@@ -20,7 +21,7 @@ class App extends Component {
       'apiKey': apiKey
     }).then(() => {
       return gapi.client.request({
-        'path': `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}`
+        'path': `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/Dancers!A1:C14`
       })
     }).then((response) => {
       console.log(response.result);
@@ -35,12 +36,16 @@ class App extends Component {
   };
 
   render() {
+
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="Zikukim">Welcome to the Zikukim Homepage</h1>
-          <Dancers googleSpreadsheet={this.state.googleSpreadsheet} />
         </header>
+        <Route
+          path='/dancers'
+          component={() => <Dancers googleSpreadsheet={this.state.googleSpreadsheet}/>}
+        />
       </div>
     );
   }

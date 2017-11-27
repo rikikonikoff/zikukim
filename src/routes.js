@@ -1,14 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import App from 'components/App/index';
-import Dancers from 'components/Dancers/index';
+import App from 'components/App';
 
 const Routes = (props) => (
   <BrowserRouter {...props}>
-    <div>
-      <Route path="/" component={App} />
-      <Route path="/dancers" component={Dancers} />
-    </div>
+    <Route path="/" component={App} />
   </BrowserRouter>
 );
 

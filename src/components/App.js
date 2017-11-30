@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import gapi from 'gapi-client';
 import Dancers from 'components/Dancers';
-import './App.css';
+import 'components/App.css';
 
 const spreadsheetId = process.env.REACT_APP_SPREADSHEET_KEY
 const apiKey = process.env.REACT_APP_GOOGLE_API_KEY

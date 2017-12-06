@@ -1,4 +1,5 @@
 import React from 'react';
+import { Jumbotron, Row } from 'react-bootstrap';
 import Dancer from 'components/Dancer';
 
 const Dancers = props => {
@@ -7,18 +8,25 @@ const Dancers = props => {
     return (
       <Dancer
         key={name}
-        id={name}
+        fullName={name}
         firstName={dancer['First Name']}
         lastName={dancer['Last Name']}
         photo={dancer['Photo']}
+        profile={dancer['Profile']}
       />
     )
   });
 
   return (
-    <div>
-      {dancers}
-    </div>
+    <Jumbotron>
+      <Row>
+        <h1>Meet the Dancers</h1>
+        <br />
+      </Row>
+      <Row className='dancersContainer'>
+        {dancers}
+      </Row>
+    </Jumbotron>
   )
 }
 

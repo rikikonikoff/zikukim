@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Col, Thumbnail } from 'react-bootstrap';
 
 class Dancer extends Component {
   constructor(props) {
@@ -9,9 +10,12 @@ class Dancer extends Component {
   render() {
 
     return (
-      <div>
-        {this.props.id}
-      </div>
+      <Col xs={10} md={6} lg={4}>
+        <Thumbnail src={this.props.photo}>
+          <h3>{this.props.fullName}</h3>
+          {this.props.profile}
+        </Thumbnail>
+      </Col>
     )
   }
 }

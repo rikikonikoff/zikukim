@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Dancer from 'components/Dancer';
 
-class Dancers extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  };
-
-  render() {
-    let dancersArray = this.props.dancers;
-    let dancers = dancersArray.shift().map(dancer => {
-      return(
-        <div>
-          {dancer.first}
-        </div>
-      )
-    });
+const Dancers = props => {
+  let dancers = props.dancers.map(dancer => {
+    let name = dancer['First Name'].concat(' ').concat(dancer['Last Name'])
     return (
-      <div>
-      </div>
+      <Dancer
+        key={name}
+        id={name}
+        firstName={dancer['First Name']}
+        lastName={dancer['Last Name']}
+        photo={dancer['Photo']}
+      />
     )
-  }
+  });
+
+  return (
+    <div>
+      {dancers}
+    </div>
+  )
 }
 
 export default Dancers;

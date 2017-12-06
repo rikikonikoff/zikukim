@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import gapi from 'gapi-client';
-import Dancers from 'components/Dancers';
+import Spreadsheet from 'components/Spreadsheet';
 import 'components/App.css';
 
 const spreadsheetId = process.env.REACT_APP_SPREADSHEET_KEY
@@ -10,7 +10,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      dancers: null
+      googleSpreadsheet: null
     };
     this.initializeGoogle = this.initializeGoogle.bind(this);
   };
@@ -24,7 +24,7 @@ class App extends Component {
       })
     }).then((response) => {
       this.setState({
-        dancers: response.result.values
+        googleSpreadsheet: response.result
       });
     }, (reason) => {
       console.log('Error: ' + reason.result.error.message);
@@ -36,17 +36,14 @@ class App extends Component {
   };
 
   render() {
-
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="Zikukim">Welcome to the Zikukim Homepage</h1>
         </header>
-        <Dancers
-          headers={this.state.headers}
-          dancers={this.state.dancers}
+        <Spreadsheet
+          sheet={this.state.googleSpreadsheet}
         />
-        {this.props.children}
       </div>
     );
   }

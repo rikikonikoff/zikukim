@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import gapi from 'gapi-client';
 import Spreadsheet from 'components/Spreadsheet';
+import { Grid } from 'react-bootstrap';
 import 'components/App.css';
 
 const spreadsheetId = process.env.REACT_APP_SPREADSHEET_KEY
@@ -41,9 +42,11 @@ class App extends Component {
         <header className="App-header">
           <h1 className="Zikukim">Welcome to the Zikukim Homepage</h1>
         </header>
-        <Spreadsheet
-          sheet={this.state.googleSpreadsheet}
-        />
+        <Grid fluid>
+          <Spreadsheet
+            sheet={this.state.googleSpreadsheet}
+          />
+        </Grid>
       </div>
     );
   }

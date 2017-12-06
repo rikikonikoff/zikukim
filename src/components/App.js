@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import gapi from 'gapi-client';
 import Spreadsheet from 'components/Spreadsheet';
-import 'components/App.css';
+import 'components/App.css.scss';
 
 const spreadsheetId = process.env.REACT_APP_SPREADSHEET_KEY
 const apiKey = process.env.REACT_APP_GOOGLE_API_KEY

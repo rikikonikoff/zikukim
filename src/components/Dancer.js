@@ -7,9 +7,8 @@ class Dancer extends Component {
   };
 
   render() {
-
     return (
-      <div>
+      <div className='columns small-6'>
         {this.props.id}
       </div>
     )

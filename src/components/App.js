@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
 import gapi from 'gapi-client';
 import Dancers from 'components/Dancers';
 import 'components/App.css';
@@ -11,8 +10,8 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      googleSpreadsheet: null
-    }
+      dancers: null
+    };
     this.initializeGoogle = this.initializeGoogle.bind(this);
   };
 
@@ -21,11 +20,12 @@ class App extends Component {
       'apiKey': apiKey
     }).then(() => {
       return gapi.client.request({
-        'path': `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/Dancers!A1:C14`
+        'path': `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/Dancers`
       })
     }).then((response) => {
-      console.log(response.result);
-      this.setState({ googleSpreadsheet: response.result });
+      this.setState({
+        dancers: response.result.values
+      });
     }, (reason) => {
       console.log('Error: ' + reason.result.error.message);
     });
@@ -42,10 +42,11 @@ class App extends Component {
         <header className="App-header">
           <h1 className="Zikukim">Welcome to the Zikukim Homepage</h1>
         </header>
-        <Route
-          path='/dancers'
-          component={() => <Dancers googleSpreadsheet={this.state.googleSpreadsheet}/>}
+        <Dancers
+          headers={this.state.headers}
+          dancers={this.state.dancers}
         />
+        {this.props.children}
       </div>
     );
   }

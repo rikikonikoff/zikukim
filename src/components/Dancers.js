@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Dancers = props => {
-  let dancers = props.googleSpreadsheet.values
-  return (
-    <div>
-      {dancers}
-    </div>
-  )
+class Dancers extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  };
+
+  render() {
+    let dancersArray = this.props.dancers;
+    let dancers = dancersArray.shift().map(dancer => {
+      return(
+        <div>
+          {dancer.first}
+        </div>
+      )
+    });
+    return (
+      <div>
+      </div>
+    )
+  }
 }
 
 export default Dancers;

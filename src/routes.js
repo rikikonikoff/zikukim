@@ -1,11 +1,14 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Router, Route, browserHistory } from 'react-router';
 import App from 'components/App';
+import Dancers from 'components/Dancers';
 
 const Routes = (props) => (
-  <BrowserRouter {...props}>
-    <Route path="/" component={App} />
-  </BrowserRouter>
+  <Router history={browserHistory}>
+    <Route path="/" component={App}>
+      <Route path='/dancers' component={Dancers} />
+    </Route>
+  </Router>
 );
 
 export default Routes;
